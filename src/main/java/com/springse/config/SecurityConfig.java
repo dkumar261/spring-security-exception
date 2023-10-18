@@ -15,14 +15,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-		//.antMatchers("/home").hasRole("NORMAL")
-		.anyRequest().authenticated().and().httpBasic();
+		http.csrf().disable().authorizeRequests().antMatchers("/user/**").hasRole("ADMIN").anyRequest().authenticated()
+				.and().httpBasic();
 	}
 
-	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication().withUser("dinesh").password(passwordEncoder().encode("dinesh")).roles("ADMIN");
 		auth.inMemoryAuthentication().withUser("vishal").password(passwordEncoder().encode("vishal")).roles("NORMAL");
