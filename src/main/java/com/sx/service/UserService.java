@@ -1,12 +1,12 @@
-package com.springse.service;
+package com.sx.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.springse.dao.UserDao;
-import com.springse.model.User;
+import com.sx.dao.UserDao;
+import com.sx.model.User;
 
 @Service
 public class UserService {

@@ -1,4 +1,4 @@
-package com.springse.dao;
+package com.sx.dao;
 
 import java.util.Arrays;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
 
-import com.springse.model.User;
+import com.sx.model.User;
 
 @Repository
 public class UserDao {
