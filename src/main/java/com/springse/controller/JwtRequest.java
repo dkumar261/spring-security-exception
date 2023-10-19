@@ -1,4 +1,4 @@
-package com.springse.model;
+package com.springse.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class JwtResponse {
+public class JwtRequest {
 
-	private String token;
+	private String name;
+	private String password;
 }
