@@ -1,4 +1,4 @@
-package com.springse.controller;
+package com.sx.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

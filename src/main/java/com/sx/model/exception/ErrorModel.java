@@ -1,4 +1,4 @@
-package com.springse.model.exception;
+package com.sx.model.exception;
 
 
 public class ErrorModel {

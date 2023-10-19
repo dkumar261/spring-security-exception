@@ -1,4 +1,4 @@
-package com.springse.model;
+package com.sx.model;
 
 public class User {
 
