@@ -3,9 +3,9 @@ package com.springse.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springse.model.User;
@@ -17,8 +17,8 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@PreAuthorize("hasRole('ADMIN')")
-	@GetMapping("/users")
+	//@PreAuthorize("hasRole('ADMIN')")
+	@GetMapping("/user")
 	public List<User> users() {
 		return userService.getUsers();
 	}
@@ -27,4 +27,10 @@ public class UserController {
 	public User getUser(@PathVariable("name") String name) {
 		return userService.getUserIdName(name);
 	}
+
+	@PostMapping("/user")
+	public String addUser() {
+		return "user addedd";
+	}
 }
+
