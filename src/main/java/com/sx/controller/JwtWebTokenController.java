@@ -29,7 +29,6 @@ public class JwtWebTokenController {
 	public JwtResponse getToken(@RequestBody JwtRequest jwtRequest) {
 
 		try {
-
 			authenticationManager.authenticate(
 					new UsernamePasswordAuthenticationToken(jwtRequest.getName(), jwtRequest.getPassword()));
 

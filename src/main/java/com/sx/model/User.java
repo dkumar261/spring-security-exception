@@ -1,5 +1,6 @@
 package com.sx.model;
 
+
 public class User {
 
 	private String name;
