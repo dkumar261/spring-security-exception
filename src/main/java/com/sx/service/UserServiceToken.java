@@ -14,7 +14,7 @@ public class UserServiceToken implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 		if ("dinesh".equals(userName)) {
-			return new User("secret", "dinesh", new ArrayList<>());
+			return new User("dinesh", "dinesh", new ArrayList<>());
 		} else {
 			throw new UsernameNotFoundException("User not found with username: " + userName);
 		}
