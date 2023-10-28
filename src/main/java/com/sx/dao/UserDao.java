@@ -6,24 +6,24 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
 
-import com.sx.model.User;
+import com.sx.model.UserModel;
 
 @Repository
 public class UserDao {
 
-	List<User> users;
+	List<UserModel> users;
 	{
-		users = Arrays.asList(new User("Dinesh", "New Delhi"), new User("Vishal", "Pune"), new User("Alok", "Indore"),
-				new User("Jack", "Mumbai"), new User("Mayank", "Noida"));
+		users = Arrays.asList(new UserModel(null, "Dinesh", "New Delhi"), new UserModel(null, "Vishal", "Pune"), new UserModel(null, "Alok", "Indore"),
+				new UserModel(null, "Jack", "Mumbai"), new UserModel(null, "Mayank", "Noida"));
 	}
 	
-	public List<User> getUsers() {
+	public List<UserModel> getUsers() {
 
 		return users;
 	}
 	
-	public User getUserIdName(String name) {
-		User user2 = users.stream().filter(user -> user.getName().equals(name)).collect(Collectors.toList()).get(0);
+	public UserModel getUserIdName(String name) {
+		UserModel user2 = users.stream().filter(user -> user.getName().equals(name)).collect(Collectors.toList()).get(0);
 		return user2;
 	}
 }
