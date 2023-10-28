@@ -1,5 +1,5 @@
 server:
-  port: 1010
+  port: 1008
 #spring.profiles.active=local
 spring:
   datasource:

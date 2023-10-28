@@ -6,31 +6,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sx.model.User;
+import com.sx.model.UserModel;
 import com.sx.service.UserService;
 
 @RestController
+@RequestMapping("user")
 public class UserController {
 
 	@Autowired
 	private UserService userService;
 
-	//@PreAuthorize("hasRole('ADMIN')")
-	@GetMapping("/user")
-	public List<User> users() {
+	public List<UserModel> users() {
 		return userService.getUsers();
 	}
 	
 	@GetMapping("/user/{name}")
-	public User getUser(@PathVariable("name") String name) {
+	public UserModel getUser(@PathVariable("name") String name) {
 		return userService.getUserIdName(name);
 	}
 
-	@PostMapping("/user")
-	public String addUser() {
-		return "user addedd";
+	@PostMapping("/create")
+	public UserModel addUser(@RequestBody UserModel userModel) {
+		return userService.createUser(userModel);
+		
 	}
 }
 
