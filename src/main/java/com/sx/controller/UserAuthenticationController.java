@@ -50,8 +50,8 @@ public class UserAuthenticationController {
 		} catch (BadCredentialsException e) {
 			throw new BadCredentialsException("Invalid User/Password:");
 		}
-		UserDetails loadUserByUsername = userServiceToken.loadUserByUsername(userModel.getName());
-		String generateToken = jwtTokenUtil.generateToken(loadUserByUsername);
+		//UserDetails loadUserByUsername = userServiceToken.loadUserByUsername(userModel.getName());
+		String generateToken = jwtTokenUtil.generateToken(userModel.getName());
 		JwtResponse jwtResponse = new JwtResponse();
 		jwtResponse.setToken(generateToken);
 		return jwtResponse;

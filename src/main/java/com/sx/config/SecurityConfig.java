@@ -44,13 +44,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //		auth.userDetailsService(userServiceToken).passwordEncoder(passwordEncoder());
 //	}
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
+    @Bean
+    PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 
-	@Bean
-	public DaoAuthenticationProvider daoAuthenticationProvider() {
+    @Bean
+    DaoAuthenticationProvider daoAuthenticationProvider() {
 		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
 		provider.setUserDetailsService(userServiceToken);
 		provider.setPasswordEncoder(passwordEncoder());

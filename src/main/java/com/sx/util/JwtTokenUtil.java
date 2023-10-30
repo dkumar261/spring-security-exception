@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
@@ -24,17 +23,17 @@ import lombok.Setter;
 public class JwtTokenUtil {
 
 	private String SECRET_KEY = "secret";
-	public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
+	public static final long JWT_TOKEN_VALIDITY = 1000 * 60 * 10;
 
-	public String generateToken(UserDetails userDetails) {
+	public String generateToken(String userDetails) {
 		Map<String, Object> claims = new HashMap<>();
-		return doGenerateToken(claims, userDetails.getUsername());
+		return doGenerateToken(claims, userDetails);
 	}
 
 	private String doGenerateToken(Map<String, Object> claims, String subject) {
 
 		return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
-				.setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
+				.setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY))
 				.signWith(SignatureAlgorithm.HS512, SECRET_KEY).compact();
 	}
 
@@ -51,9 +50,9 @@ public class JwtTokenUtil {
 		return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
 	}
 
-	public Boolean validateToken(String token, UserDetails userDetails) {
-		final String username = extractUsername(token);
-		return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+	public Boolean validateToken(String token, String userName) {
+		final String toKenUsername = extractUsername(token);
+		return (toKenUsername.equals(userName) && !isTokenExpired(token));
 	}
 
 	private Boolean isTokenExpired(String token) {
