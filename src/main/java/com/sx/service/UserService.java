@@ -1,6 +1,7 @@
 package com.sx.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -41,16 +42,5 @@ public class UserService {
 
 		UserModel returedUserModel = UserModel.builder().id(savedUser.getId()).name(savedUser.getName()).build();
 		return returedUserModel;
-	}
-
-	public UserModel login(UserModel userModel) {
-
-		User user = userRepository.getUserByName(userModel.getName());
-		boolean isPasswordMatched = passwordEncoder.matches(userModel.getPassword(), user.getPassword());
-		if (isPasswordMatched) {
-			UserModel returedUserModel = UserModel.builder().id(user.getId()).name(user.getName()).build();
-			return returedUserModel;
-		}
-		throw new BadCredentialsException("Invalid Password.");
 	}
 }

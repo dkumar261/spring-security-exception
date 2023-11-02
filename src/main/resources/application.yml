@@ -1,7 +1,20 @@
 server:
   port: 1008
 #spring.profiles.active=local
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        
+  endpoint:
+    health:
+      show-details: always 
+      
 spring:
+  application:
+    name: sx
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres?currentSchema=ms-practice
     username: postgres
