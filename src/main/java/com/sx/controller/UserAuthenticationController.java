@@ -1,12 +1,12 @@
 package com.sx.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +26,6 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping(ApplicationConstants.API_URL_OAUTH)
 public class UserAuthenticationController {
 
-	
 	@Autowired
 	private UserServiceToken userServiceToken;
 
@@ -35,19 +34,18 @@ public class UserAuthenticationController {
 
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
-	
+
 	@Autowired
 	private UserService userService;
 
 	public List<UserModel> users() {
 		return userService.getUsers();
 	}
-	
+
 	@PostMapping(ApplicationConstants.API_URL_TOKEN)
 	public JwtResponse getUser(@RequestBody UserModel userModel) {
 
-		log.info("Hello from Logback {}", "Hare krsna !! ............ from lombok");
-		log.error("Hello from Logback {}", "Error !! ............from lombok");
+		log.info("User :" + userModel.getName() + " has login at " + new Date());
 		try {
 			authenticationManager.authenticate(
 					new UsernamePasswordAuthenticationToken(userModel.getName(), userModel.getPassword()));
@@ -55,7 +53,8 @@ public class UserAuthenticationController {
 		} catch (BadCredentialsException e) {
 			throw new BadCredentialsException("Invalid User/Password:");
 		}
-		//UserDetails loadUserByUsername = userServiceToken.loadUserByUsername(userModel.getName());
+		// UserDetails loadUserByUsername =
+		// userServiceToken.loadUserByUsername(userModel.getName());
 		String generateToken = jwtTokenUtil.generateToken(userModel.getName());
 		JwtResponse jwtResponse = new JwtResponse();
 		jwtResponse.setToken(generateToken);
@@ -65,7 +64,6 @@ public class UserAuthenticationController {
 	@PostMapping("/create")
 	public UserModel addUser(@RequestBody UserModel userModel) {
 		return userService.createUser(userModel);
-		
+
 	}
 }
-
