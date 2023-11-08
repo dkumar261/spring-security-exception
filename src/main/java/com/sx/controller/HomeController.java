@@ -12,8 +12,7 @@ public class HomeController {
 	@GetMapping(value = "/ws/v1/home")
 	public String users() {
 
-		log.info("Hello from Logback {}", "Hare krsna !! ............ from lombok");
-		log.error("Hello from Logback {}", "Error !! ............from lombok");
+		
 		return "This is Home !!";
 	}
 }
