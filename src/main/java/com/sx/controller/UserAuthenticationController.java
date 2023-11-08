@@ -19,6 +19,9 @@ import com.sx.service.UserServiceToken;
 import com.sx.util.ApplicationConstants;
 import com.sx.util.JwtTokenUtil;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RequestMapping(ApplicationConstants.API_URL_OAUTH)
 public class UserAuthenticationController {
@@ -42,7 +45,9 @@ public class UserAuthenticationController {
 	
 	@PostMapping(ApplicationConstants.API_URL_TOKEN)
 	public JwtResponse getUser(@RequestBody UserModel userModel) {
-		
+
+		log.info("Hello from Logback {}", "Hare krsna !! ............ from lombok");
+		log.error("Hello from Logback {}", "Error !! ............from lombok");
 		try {
 			authenticationManager.authenticate(
 					new UsernamePasswordAuthenticationToken(userModel.getName(), userModel.getPassword()));
