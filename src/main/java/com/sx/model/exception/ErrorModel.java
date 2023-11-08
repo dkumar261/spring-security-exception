@@ -1,49 +1,20 @@
 package com.sx.model.exception;
 
+import java.time.LocalDateTime;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
 public class ErrorModel {
 
+	private LocalDateTime timestamp;
 	private String message;
 	private String details;
-
-	
-	public ErrorModel() {
-		
-	}
-	
-	/**
-	 * @param message
-	 * @param details
-	 */
-	public ErrorModel(String message, String details) {
-		super();
-		this.message = message;
-		this.details = details;
-	}
-	/**
-	 * @return the message
-	 */
-	public String getMessage() {
-		return message;
-	}
-	/**
-	 * @param message the message to set
-	 */
-	public void setMessage(String message) {
-		this.message = message;
-	}
-	/**
-	 * @return the details
-	 */
-	public String getDetails() {
-		return details;
-	}
-	/**
-	 * @param details the details to set
-	 */
-	public void setDetails(String details) {
-		this.details = details;
-	}
-	
 	
 }
