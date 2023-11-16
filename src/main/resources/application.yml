@@ -16,9 +16,9 @@ spring:
   application:
     name: sx
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=ms-practice
-    username: postgres
-    password: admin
+    url: jdbc:postgresql://aiml-dev-db.cbtaanq5yhb4.us-east-1.rds.amazonaws.com:5432/kirkland?useSSL=false&currentSchema=org_manager
+    username: bombora_ui
+    password: bombora_ui
   jpa:
     hibernate:
       ddl-auto: update
