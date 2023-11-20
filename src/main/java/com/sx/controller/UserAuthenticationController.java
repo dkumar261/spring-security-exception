@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sx.model.JwtResponse;
 import com.sx.model.UserModel;
 import com.sx.service.UserService;
-import com.sx.service.UserServiceToken;
 import com.sx.util.ApplicationConstants;
 import com.sx.util.JwtTokenUtil;
 
@@ -26,8 +25,6 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping(ApplicationConstants.API_URL_OAUTH)
 public class UserAuthenticationController {
 
-	@Autowired
-	private UserServiceToken userServiceToken;
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
@@ -53,8 +50,6 @@ public class UserAuthenticationController {
 		} catch (BadCredentialsException e) {
 			throw new BadCredentialsException("Invalid User/Password:");
 		}
-		// UserDetails loadUserByUsername =
-		// userServiceToken.loadUserByUsername(userModel.getName());
 		String generateToken = jwtTokenUtil.generateToken(userModel.getName());
 		JwtResponse jwtResponse = new JwtResponse();
 		jwtResponse.setToken(generateToken);
