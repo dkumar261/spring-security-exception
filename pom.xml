@@ -11,9 +11,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com</groupId>
-	<artifactId>spring-se</artifactId>
+	<artifactId>user-setting</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-se</name>
+	<name>user-setting</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
